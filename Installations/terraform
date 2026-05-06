@@ -1,0 +1,57 @@
+Ensure that your system is up to date and that you have installed the gnupg and software-properties-common packages. 
+You will use these packages to verify HashiCorp's GPG signature and install HashiCorp's Debian package repository.
+
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+
+--> Install HashiCorp's GPG key.
+
+$ wget -O- https://apt.releases.hashicorp.com/gpg | \
+gpg --dearmor | \
+sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg > /dev/null
+
+--> Verify the GPG key's fingerprint.
+
+$ gpg --no-default-keyring \
+--keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg \
+--fingerprint
+
+--> Add the official HashiCorp repository to your system.
+
+$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/key
+
+sudo apt update
+
+--> Install Terraform from the new repository.
+
+$ sudo apt-get install terraform
+
+
+
+---------------------------------------------- error --------------------------------------
+
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu resolute InRelease
+Hit:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu resolute-updates InRelease
+Hit:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu resolute-backports InRelease
+Hit:4 https://download.docker.com/linux/ubuntu resolute InRelease
+Hit:5 http://security.ubuntu.com/ubuntu resolute-security InRelease
+Ign:6 https://apt.releases.hashicorp.com resolute InRelease
+Err:7 https://apt.releases.hashicorp.com resolute Release
+  404  Not Found [IP: 18.160.10.45 443]
+Reading package lists... Done
+E: The repository 'https://apt.releases.hashicorp.com resolute Release' does not have a Release file.
+N: Updating from such a repository can't be done securely, and is therefore disabled by default.
+N: See apt-secure(8) manpage for repository creation and user configuration details.
+
+
+
+--> lsb_release -c
+--> sudo nano /etc/apt/sources.list.d/hashicorp.list
+or wherever you added the HashiCorp repo. Replace resolute with your actual codename (e.g., focal, jammy).
+
+Example for Ubuntu 22.04 (Jammy):
+
+Code
+--> deb [arch=amd64] https://apt.releases.hashicorp.com jammy main
+--> sudo apt-get update
+--> sudo apt-get install terraform
