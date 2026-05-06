@@ -1,0 +1,223 @@
+ubuntu@ip-172-31-22-21:~$ git clone https://github.com/iam-veeramalla/ultimate-devops-project-demo.git
+Cloning into 'ultimate-devops-project-demo'...
+remote: Enumerating objects: 9732, done.
+remote: Total 9732 (delta 0), reused 0 (delta 0), pack-reused 9732 (from 1)
+Receiving objects: 100% (9732/9732), 43.27 MiB | 31.05 MiB/s, done.
+Resolving deltas: 100% (5819/5819), done.
+ubuntu@ip-172-31-22-21:~$ cd ultimate-devops-project-demo/
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ ls
+CHANGELOG.md     README.md                                  docker-compose.minimal.yml  ide-gen-proto.sh   package.json    test
+CONTRIBUTING.md  buildkitd.toml                             docker-compose.yml          internal           pb
+LICENSE          docker-compose-tests.yml                   docker-gen-proto.sh         kubernetes         renovate.json5
+Makefile         docker-compose-tests_include-override.yml  dockerddddd                 package-lock.json  src
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ ls -lrt
+total 324
+-rw-rw-r--  1 ubuntu ubuntu   9679 May  6 11:16 CONTRIBUTING.md
+-rw-rw-r--  1 ubuntu ubuntu   8460 May  6 11:16 Makefile
+-rw-rw-r--  1 ubuntu ubuntu    561 May  6 11:16 docker-compose-tests_include-override.yml
+-rw-rw-r--  1 ubuntu ubuntu   8303 May  6 11:16 README.md
+-rw-rw-r--  1 ubuntu ubuntu  11357 May  6 11:16 LICENSE
+-rw-rw-r--  1 ubuntu ubuntu   3452 May  6 11:16 docker-compose-tests.yml
+-rw-rw-r--  1 ubuntu ubuntu    110 May  6 11:16 buildkitd.toml
+-rw-rw-r--  1 ubuntu ubuntu  43952 May  6 11:16 CHANGELOG.md
+-rw-rw-r--  1 ubuntu ubuntu  17421 May  6 11:16 docker-compose.minimal.yml
+-rw-rw-r--  1 ubuntu ubuntu  23709 May  6 11:16 docker-compose.yml
+-rwxrwxr-x  1 ubuntu ubuntu   2282 May  6 11:16 ide-gen-proto.sh
+-rw-rw-r--  1 ubuntu ubuntu  21736 May  6 11:16 dockerddddd
+-rwxrwxr-x  1 ubuntu ubuntu   1569 May  6 11:16 docker-gen-proto.sh
+drwxrwxr-x  3 ubuntu ubuntu   4096 May  6 11:16 internal
+drwxrwxr-x 21 ubuntu ubuntu   4096 May  6 11:16 kubernetes
+drwxrwxr-x  2 ubuntu ubuntu   4096 May  6 11:16 pb
+-rw-rw-r--  1 ubuntu ubuntu 116151 May  6 11:16 package-lock.json
+-rw-rw-r--  1 ubuntu ubuntu   3220 May  6 11:16 renovate.json5
+-rw-rw-r--  1 ubuntu ubuntu    170 May  6 11:16 package.json
+drwxrwxr-x 28 ubuntu ubuntu   4096 May  6 11:16 src
+drwxrwxr-x  3 ubuntu ubuntu   4096 May  6 11:16 test
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ docker compose up
+[+] up 233/270
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-accounting [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 104.9MB / 109.1MB                                 Pulling 189.6s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-flagd-ui [⣿⣿⣿⣿⣿⣿⣿] 47.42MB / 48.87MB                                        Pulling 189.6s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-shipping                                                                    Pulled   69.2s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-product-catalog                                                             Pulled   60.9s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-image-provider                                                              Pulled  145.4s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-email [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 88.99MB / 91.07MB                                      Pulling 189.6s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-kafka [⣿⣿⣿⣿⣿⣿⣶⣿⣿⣿⣿⣿] 193.1MB / 223.7MB                                      Pulling 189.6s
+ ⠼ Image jaegertracing/jaeger:2.10.0 [⣿⣿⣿⣿⣿⣿] 50.94MB / 51.59MB                                                        Pulling 189.6s
+ ✔ Image valkey/valkey:8.1.3-alpine                                                                                    Pulled   95.4s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-payment [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]                                       Pulling 189.6s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-ad [⣿⣿⣿⣿⣿⣿⣿⣿⣿] 161.5MB / 166.4MB                                            Pulling 189.6s
+ ⠼ Image quay.io/prometheus/prometheus:v3.5.0 [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 122.5MB / 122.5MB                                           Pulling 189.6s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-quote                                                                       Pulled  143.9s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-recommendation                                                              Pulled  134.9s
+ ✔ Image ghcr.io/open-feature/flagd:v0.12.9                                                                            Pulled  186.1s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-fraud-detection [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿]                   Pulling 189.6s
+ ⠼ Image ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-co... [⣿⣿⣿] 90.84MB / 90.84MB Pulling 189.6s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-frontend [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⣿⣿]                                       Pulling 189.6s
+ ⠼ Image grafana/grafana:12.2.0 [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 201.3MB / 204.3MB                                                         Pulling 189.6s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-cart [⣿⣿⣿⣿⣿⣿] 48.34MB / 48.34MB                                             Pulling 189.6s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-frontend-proxy [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 58.72MB / 61.25MB                             Pulling 189.6s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-postgresql [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣿⣿⣿⣿⣿⣿] 147.7MB / 161.1MB                             Pulling 189.6s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-currency                                                                    Pulled  108.4s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-checkout                                                                    Pulled   67.0s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-load-generator [⣿⣿⣿⣿⣿⣿⣿⡀⣿⣿] 211.8MB / 564.2MB                               Pulling 189.6s
+failed to extract layer (application/vnd.docker.image.rootfs.diff.tar.gzip sha256:097a69c6efe61a630f29d2a86b647c4e05f6155a34c028551c18a44ccccc1500) to overlayfs as "extract-233355767-G4fK sha256:825527b434129dcbcbb81798f705ee973e2624f7400d52a24c1334497d80fe2f": write /var/lib/containerd/io.containerd.snapshotter.v1.overlayfs/snapshots/57/fs/bin/prometheus: no space left on device
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       6.7G  5.3G  1.4G  81% /
+tmpfs           476M     0  476M   0% /dev/shm
+tmpfs           191M  3.4M  188M   2% /run
+tmpfs           476M     0  476M   0% /tmp
+none            1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+none            1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+/dev/xvda13     989M   96M  826M  11% /boot
+/dev/xvda15     105M  6.3M   99M   7% /boot/efi
+none            1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+none            1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+none            1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
+tmpfs            96M  8.0K   96M   1% /run/user/1000
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ ls blk
+ls: cannot access 'blk': No such file or directory
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ lsblk
+NAME     MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+loop0      7:0    0 28.2M  1 loop /snap/amazon-ssm-agent/13009
+loop1      7:1    0   74M  1 loop /snap/core22/2411
+loop2      7:2    0 48.4M  1 loop /snap/snapd/26382
+xvda     202:0    0   30G  0 disk
+├─xvda1  202:1    0  6.9G  0 part /
+├─xvda13 202:13   0 1023M  0 part /boot
+├─xvda14 202:14   0    4M  0 part
+└─xvda15 202:15   0  106M  0 part /boot/efi
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ sudo apt install cloud-guest-utils
+cloud-guest-utils is already the newest version (0.33-1build1).
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 16
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ sudo growpart/dev/xvda 1
+sudo: 'growpart/dev/xvda': command not found
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ sudo growpart /dev/xvda 1
+CHANGED: partition=1 start=2324480 old: size=14452703 end=16777182 new: size=60590047 end=62914526
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       6.7G  5.3G  1.4G  81% /
+tmpfs           476M     0  476M   0% /dev/shm
+tmpfs           191M  3.4M  188M   2% /run
+tmpfs           476M     0  476M   0% /tmp
+none            1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+none            1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+/dev/xvda13     989M   96M  826M  11% /boot
+/dev/xvda15     105M  6.3M   99M   7% /boot/efi
+none            1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+none            1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+none            1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
+tmpfs            96M  8.0K   96M   1% /run/user/1000
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ lsblk
+NAME     MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS
+loop0      7:0    0 28.2M  1 loop /snap/amazon-ssm-agent/13009
+loop1      7:1    0   74M  1 loop /snap/core22/2411
+loop2      7:2    0 48.4M  1 loop /snap/snapd/26382
+xvda     202:0    0   30G  0 disk
+├─xvda1  202:1    0 28.9G  0 part /
+├─xvda13 202:13   0 1023M  0 part /boot
+├─xvda14 202:14   0    4M  0 part
+└─xvda15 202:15   0  106M  0 part /boot/efi
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root       6.7G  5.3G  1.4G  81% /
+tmpfs           476M     0  476M   0% /dev/shm
+tmpfs           191M  3.4M  188M   2% /run
+tmpfs           476M     0  476M   0% /tmp
+none            1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+none            1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+/dev/xvda13     989M   96M  826M  11% /boot
+/dev/xvda15     105M  6.3M   99M   7% /boot/efi
+none            1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+none            1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+none            1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
+tmpfs            96M  8.0K   96M   1% /run/user/1000
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ sudo resize2fs /dev/xvda1
+resize2fs 1.47.2 (1-Jan-2025)
+Filesystem at /dev/xvda1 is mounted on /; on-line resizing required
+old_desc_blocks = 1, new_desc_blocks = 4
+The filesystem on /dev/xvda1 is now 7573755 (4k) blocks long.
+
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ df -h
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        28G  5.3G   23G  19% /
+tmpfs           476M     0  476M   0% /dev/shm
+tmpfs           191M  3.4M  188M   2% /run
+tmpfs           476M     0  476M   0% /tmp
+none            1.0M     0  1.0M   0% /run/credentials/systemd-journald.service
+none            1.0M     0  1.0M   0% /run/credentials/systemd-resolved.service
+/dev/xvda13     989M   96M  826M  11% /boot
+/dev/xvda15     105M  6.3M   99M   7% /boot/efi
+none            1.0M     0  1.0M   0% /run/credentials/systemd-networkd.service
+none            1.0M     0  1.0M   0% /run/credentials/getty@tty1.service
+none            1.0M     0  1.0M   0% /run/credentials/serial-getty@ttyS0.service
+tmpfs            96M  8.0K   96M   1% /run/user/1000
+ubuntu@ip-172-31-22-21:~/ultimate-devops-project-demo$ docker compose up -d
+[+] up 70/131
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-frontend                                                      Pulled                149.3s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-postgresql                                                    Pulled                136.5s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-load-generator                                                Pulled                161.8s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-kafka                                                         Pulled                128.0s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-payment                                                       Pulled                 88.0s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-accounting                                                    Pulled                 83.7s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-cart                                                          Pulled                 81.4s
+ ✔ Image grafana/grafana:12.2.0                                                                          Pulled                137.6s
+ ✔ Image jaegertracing/jaeger:2.10.0                                                                     Pulled                 83.9s
+ ✔ Image quay.io/prometheus/prometheus:v3.5.0                                                            Pulled                122.5s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-fraud-detection                                               Pulled                119.1s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-ad                                                            Pulled                103.7s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-email                                                         Pulled                 86.1s
+ ✔ Image ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.133.0 Pulled                121.6s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-flagd-ui                                                      Pulled                 87.6s
+ ✔ Image ghcr.io/open-telemetry/demo:2.1.3-frontend-proxy                                                Pulled                 47.4s
+[+] Building 117.3s (9/9) FINISHED
+ => [internal] load local bake definitions                                                                                      0.0s
+ => => reading from stdin 12.08kB                                                                                               0.0s
+ => [internal] load build definition from Dockerfile                                                                            0.1s
+ => => transferring dockerfile: 2.47kB                                                                                          0.0s
+ => [internal] load metadata for docker.io/opensearchproject/opensearch:3.2.0                                                   0.6s
+ => [internal] load .dockerignore                                                                                               0.0s
+ => => transferring context: 440B                                                                                               0.0s
+ => importing cache manifest from ghcr.io/open-telemetry/demo:2.1.3-opensearch                                                  0.5s
+ => => inferred cache manifest type: application/vnd.oci.image.index.v1+json                                                    0.0s
+ => [1/2] FROM docker.io/opensearchproject/opensearch:3.2.0@sha256:23297b8d8545e129dd58c254ed08d786dc552410ba772983ad2af31048  38.6s
+ => => resolve docker.io/opensearchproject/opensearch:3.2.0@sha256:23297b8d8545e129dd58c254ed08d786dc552410ba772983ad2af31048d  0.0s
+ => => sha256:f2a93b8e507ca0536e4c19c47633d105801546aa137b337cba431183b6f94b02 1.88kB / 1.88kB                                  0.1s
+ => => sha256:e53b047a1863cd4c6adec9483f9d7ab82e8adea2eea9e501aae7c43581835de4 227B / 227B                                      0.1s
+ => => sha256:02e053413b833cf4bf25c1193c6bcb77bcd310b4375e87495d4f85e893d23ad1 1.56kB / 1.56kB                                  0.1s
+ => => sha256:fcdb60fbb2069072671f1a7b57627ba2c73db1f3119a5041786c61f816deb163 947.04MB / 947.04MB                             18.4s
+ => => sha256:fa8aa3279ea97b787275e89335d65b203e6e91f87824d8a3c3cdd666bac37788 4.42MB / 4.42MB                                  0.9s
+ => => sha256:b9bd06b1e98f2884554d02055b944634294fa4d6f341ec4d0d7349c492676b31 53.84MB / 53.84MB                                1.8s
+[+] up 85/166ting sha256:b9bd06b1e98f2884554d02055b944634294fa4d6f341ec4d0d7349c492676b31                                       7.1s
+ ⠋ Image ghcr.io/open-telemetry/demo:2.1.3-frontend [⣿⠀⣿⣿⣿⣿⣿⣿]                                           Building              386.3s
+ ⠸ Image ghcr.io/open-telemetry/demo:2.1.3-postgresql [⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿] 148.9MB / 158.5MB               Building              386.3s
+ ⠦ Image ghcr.io/open-telemetry/demo:2.1.3-load-generator [⠀⠀⠀⠀⠀⠀⠀]                                      Building              386.3s
+ ⠇ Image ghcr.io/open-telemetry/demo:2.1.3-kafka [⠀⠀⠀⠀⠀⠀⠀⠀⠀]                                             Building              386.3s
+ ⠇ Image ghcr.io/open-telemetry/demo:2.1.3-payment [⠀⠀⠀⠀⠀⠀⠀⠀]                                            Building              386.3s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-accounting [⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀]                                       Building              386.3s
+ ⠙ Image ghcr.io/open-telemetry/demo:2.1.3-cart [⣿⣿⣿⣿⣿⣿] 46.63MB / 47.34MB                               Building              386.3s
+ ✔ Image grafana/grafana:12.2.0                                                                          Pulled                137.6s
+ ✔ Image jaegertracing/jaeger:2.10.0                                                                     Pulled                 83.9s
+ ✔ Image quay.io/prometheus/prometheus:v3.5.0                                                            Pulled                122.5s
+ ⠏ Image ghcr.io/open-telemetry/demo:2.1.3-fraud-detection [⠀⠀⠀⠀]                                        Building              386.3s
+ ⠴ Image ghcr.io/open-telemetry/demo:2.1.3-ad [⠀⠀⠀⠀⠀⠀]                                                   Building              386.3s
+ ⠇ Image ghcr.io/open-telemetry/demo:2.1.3-email [⠀⠀⠀⠀⠀⠀⠀⠀⠀]                                             Building              386.3s
+ ✔ Image ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.133.0 Pulled                121.6s
+ ⠼ Image ghcr.io/open-telemetry/demo:2.1.3-flagd-ui [⣿⣿⣿⣿⣿⣿⣿] 47.58MB / 49.76MB                          Building              386.3s
+ ⠹ Image ghcr.io/open-telemetry/demo:2.1.3-frontend-proxy [⠀⠀⠀⠀]                                         Building              386.3s
+ ⠏ Image ghcr.io/open-telemetry/demo:2.1.3-product-catalog                                               Building              223.9s
+ ⠏ Image ghcr.io/open-telemetry/demo:2.1.3-currency                                                      Building              223.9s
+ ⠏ Image ghcr.io/open-telemetry/demo:2.1.3-quote                                                         Building              223.9s
+ ✔ Image ultimate-devops-project-demo-opensearch                                                         Built                 117.4s
+ ⠏ Image ghcr.io/open-telemetry/demo:2.1.3-recommendation                                                Building              223.9s
+ ⠏ Image ghcr.io/open-telemetry/demo:2.1.3-checkout                                                      Building              223.9s
+ ⠏ Image ghcr.io/open-telemetry/demo:2.1.3-image-provider                                                Building              223.9s
+ ⠏ Image ghcr.io/open-telemetry/demo:2.1.3-shipping                                                      Building              223.9s
+ ✔ Network opentelemetry-demo                                                                            Created                 0.1s
+ ✔ Container flagd                                                                                       Started                 5.1s
+ ✔ Container postgresql                                                                                  Started                 4.4s
+ ✔ Container kafka                                                                                       Started                 4.3s
+ ✔ Container valkey-cart                                                                                 Started                 4.0s
+ ✔ Container grafana                                                                                     Started                 5.3s
+ ... 21 more
