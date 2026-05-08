@@ -1,0 +1,108 @@
+learned how to build the Java based microservice, locally on your machine
+==============================================================
+
+log in to the EC2 instance that we created
+
+product catalog - go lang
+frontend - java
+recommendation service - python
+
+cd ultimate-devops-project-demo/src/ad
+
+java --version
+sudo apt install openjdk-21-jre-headless
+
+We will first see if you have permissions to the Gradle wrapper.
+if not - 
+chmod +x ./gradlew
+
+./gradlew installDist --> 
+
+So this command here is going to start the Gradle daemon which is like a server.
+And it is going to install the dependencies.
+Then it is going to perform the compilation.
+Also it is going to build the application and the build application is saved 
+in a particular directory, which is also provided by the directory developer.
+
+
+So in previous lecture when we ran Go Build, you know, we passed a argument 
+called hyphen o which defines the destination, right.
+Similarly, when you run the Gradle install dist, even it is stored in a particular 
+directory, which you can mention in the Gradle configuration.
+
+
+Now let's see if it is created a build directory.
+If I do ls hyphen ltr.
+
+ls -ltr
+
+Yes, it created a build directory.
+
+ls -ltr ./build/install/opentelemetry-demo-ad/bin/Ad
+
+It will create an executable script src/ad/build/install/oteldemo/bin/Ad.
+
+-----------------------------------------------------------------------
+
+To run the Ad Service:
+
+export AD_PORT=8080
+export FEATURE_FLAG_GRPC_SERVICE_ADDR=featureflagservice:50053
+./build/install/opentelemetry-demo-ad/bin/Ad
+
+
+
+-------------------------------------------------------------------------
+
+
+Now we will start with the life cycle of Docker.
+
+That is, as a first step we will start creating the docker file.
+
+We will run this Docker image and we will containerize it.
+=======================================================================
+
+
+cd ultimate-devops-project-demo/src/ad
+ls
+
+vim Dockerfile
+
+<------------------------ ***** --------------------------->
+
+FROM eclipse-temurin:21-jdk AS builder
+
+WORKDIR /usr/src/app/
+
+COPY gradlew* settings.gradle* build.gradle .
+COPY ./gradle ./gradle
+
+RUN chmod +x ./gradlew
+RUN ./gradlew
+RUN ./gradlew downloadRepos
+
+COPY . .
+COPY ./pb ./proto
+RUN chmod +x ./gradlew
+RUN ./gradlew installDist -PprotoSourceDir=./proto
+
+#####################################################
+
+FROM eclipse-temurin:21-jre
+
+WORKDIR /usr/src/app/
+
+COPY --from=builder /usr/src/app/ ./
+
+ENV AD_PORT 9099
+
+ENTRYPOINT ["./build/install/opentelemetry-demo-ad/bin/Ad"]
+
+-------------------------------------------------------------------------
+
+
+docker build abhishekf5/adservice:v1
+docker run abhishekf5/adservice:v1
+
+
+
