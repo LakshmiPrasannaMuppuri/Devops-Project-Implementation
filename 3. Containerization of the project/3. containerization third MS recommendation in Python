@@ -1,0 +1,52 @@
+log in to the EC2 instance that we created
+
+product catalog - go lang
+frontend - java
+recommendation service - python
+
+
+cd ultimate-devops-project-demo/src/recommendation
+ls
+
+
+Now we will start with the life cycle of Docker.
+
+That is, as a first step we will start creating the docker file.
+
+We will run this Docker image and we will containerize it.
+=======================================================================
+
+
+cd ultimate-devops-project-demo/src/ad
+ls
+
+vim Dockerfile
+
+<------------------------ ***** --------------------------->
+
+
+FROM python:3.12-slim-bookworm AS base
+
+WORKDIR /usr/src/app
+
+COPY requirements.txt ./
+
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
+
+COPY . .
+
+RUN opentelemetry-bootstrap -a install 
+
+ENV RECOMMENDATION_PORT 1010
+
+ENTRYPOINT ["python", "recommendation_server.py"]
+
+
+---------------------------------------------------------------------
+
+docker build -t abhishekf5/recommendationservice:v1
+docker run abhishekf5/recommendationservice:v1
+
+
+
