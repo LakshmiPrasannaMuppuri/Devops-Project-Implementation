@@ -1,0 +1,98 @@
+learned how to build the go binary locally on your machine
+==============================================================
+
+log in to the EC2 instance that we created
+
+product catalog - go lang
+frontend - java
+recommendation service - python
+
+cd ultimate-devops-project-demo/src/product-catalog
+
+Local Build
+To build the service binary, run:
+
+export PRODUCT_CATALOG_PORT=8088
+go build -o product-catalog .   --> it download all the dependencies
+./product-catalog
+
+--> Product Catalog Service
+When this service is run the output should be similar to the following
+
+INFO[0000] Loaded 10 products                           
+INFO[0000] Product Catalog gRPC server started on port: 8088 
+
+
+--------------------------------------
+--> first need to install go
+go --version
+sudo apt install golang-go
+---------------------------------------
+
+
+
+Now we will start with the life cycle of Docker.
+
+That is, as a first step we will start creating the docker file.
+
+We will run this Docker image and we will containerize it.
+=======================================================================
+
+cd ultimate-devops-project-demo/src/product-catalog
+ls
+
+vim Dockerfile
+
+<------------------------ ***** --------------------------->
+
+FROM golang:1.22-alpine AS builder  --> (need a base image that is of Golang)
+
+WORKDIR /usr/src/app/  --> ( directory for the docker file or the docker commands execution)
+
+# Use Go build cache for dependencies
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    mkdir -p /root/.cache/go-build  --> (not required)
+
+# Copy
+COPY go.mod go.sum ./
+
+# Download the binaries
+RUN go mod download
+
+# Copy the rest of the source code
+COPY . .  --> (copy the source code)
+
+RUN go build -o product-catalog .
+
+####################################
+
+FROM alpine AS release
+
+WORKDIR /usr/src/app/
+
+COPY ./products/ ./products/
+COPY --from=builder /usr/src/app/product-catalog/ ./
+
+ENV PRODUCT_CATALOG_PORT=8088
+ENTRYPOINT [ "./product-catalog" ]
+
+
+==============================================================================
+
+docker build -t abhishekf5/product-catalog:v1
+docker images
+docker run  abhishekf5/product-catalog:v1
+
+get output like similar
+
+--> Product Catalog Service
+When this service is run the output should be similar to the following
+
+INFO[0000] Loaded 10 products                           
+INFO[0000] Product Catalog gRPC server started on port: 8088 
+
+
+
+
+
