@@ -1,0 +1,28 @@
+Docker init which can magically write the Docker files for you.
+there is one important thing to note that is docker init does not work on your 
+EC2 instance because docker init only comes with Docker desktop, 
+so you can use docker init.
+
+But on your personal machine or, you know, on your organizational laptop as well.
+But only thing is that it should have Docker desktop installed.
+
+I can go to my personal machine, which is my laptop, and I will switch to the
+directory src shipping service.
+
+Here I will write the docker init command.
+
+cd src/shipping/
+docker init  --> (if already exists override them)
+
+select the application platform does your project use - programming language
+-- Rust
+
+what version of rust do you want to use? -- latest version (1.86.0)
+what port does your server listen on? -- 7077
+
+your docker file is ready
+
+ls -lrt
+vim Dockerfile
+docker build .
+
