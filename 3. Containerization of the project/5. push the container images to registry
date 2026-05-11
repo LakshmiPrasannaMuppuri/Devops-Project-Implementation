@@ -1,0 +1,31 @@
+docker hub
+quay.io
+ECR ACR GHCR
+
+
+docker login docker.io
+press enter to open browser
+enter confirmatio code
+login succeeded
+
+
+-------------------------------------------------
+
+docker images
+docker images | grep abhishekf5
+docker push <username>/<image-name>
+docker push docker.io/<username>/<repo-created in docker hub with version v2>:v2
+docker push docker.io/abhishekf5/product-catalog:v2 
+docker push docker.io/abhishekf5/adservice:v2 
+docker push docker.io/abhishekf5/recommendatioservice:v2 
+
+
+===============================================================================
+
+
+How container images are manager in a single registry in realtime?
+------------------------------------------------------------------------
+
+docker tag stargate/product-catalog:v16
+docker push stargate/product-catalog:v16
+
